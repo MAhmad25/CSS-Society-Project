@@ -22,7 +22,7 @@ const Team = () => {
                                     { name: "Faizan E Bahoo", role: "Information Secretary", img: "/public/images/faizan.webp", color: "from-cyan-400 to-blue-400" },
                               ].map((member, i) => (
                                     <div key={i} className="fade-in text-center group cursor-pointer">
-                                          <div className={`relative w-full aspect-square rounded-3xl overflow-hidden mb-4 bg-linear-to-br ${member.color}`}>
+                                          <div>
                                                 <img src={member.img} alt={member.name} className="w-full h-full object-cover mix-blend-luminosity group-hover:mix-blend-normal transition-all duration-500" />
                                           </div>
                                           <h4 className="font-bold text-lg mb-1">{member.name}</h4>
