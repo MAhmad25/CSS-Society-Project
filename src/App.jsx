@@ -64,8 +64,8 @@ const App = () => {
       return (
             <div className="min-h-screen bg-linear-to-br from-blue-50 via-white to-yellow-50 text-gray-900">
                   {/* Floating Navigation */}
-                  <nav className={`fixed top-8 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${scrolled ? "top-4 scale-95" : ""}`}>
-                        <div className="hidden lg:flex items-center gap-2 bg-white/95 backdrop-blur-xl border border-gray-200/60 rounded-full px-3 py-3 shadow-xl shadow-gray-900/5">
+                  <nav className="fixed top-0 left-0 right-0 z-50">
+                        <div className={`hidden lg:flex items-center gap-2 bg-white/95 backdrop-blur-xl border border-gray-200/60 rounded-full px-3 py-3 shadow-xl shadow-gray-900/5 fixed top-8 left-1/2 -translate-x-1/2 transition-all duration-500 ${scrolled ? "top-4 scale-95" : ""}`}>
                               <div className="px-4 flex items-center gap-2 mr-2">
                                     <div className="w-9 h-9 bg-linear-to-br from-blue-900 to-blue-700 rounded-full flex items-center justify-center">
                                           <img src="/images/logo.jpg" className="text-yellow-400 font-bold text-sm"></img>
@@ -79,12 +79,12 @@ const App = () => {
                               ))}
                         </div>
 
-                        <button className="lg:hidden fixed top-6 right-6 w-14 h-14 bg-white/95 backdrop-blur-xl border border-gray-200/60 rounded-full flex items-center justify-center shadow-xl" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                        <button className="lg:hidden fixed top-6 right-6 w-14 h-14 bg-white/95 backdrop-blur-xl border border-gray-200/60 rounded-full flex items-center justify-center shadow-xl z-50" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                               {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
                         </button>
 
                         {isMenuOpen && (
-                              <div className="lg:hidden fixed inset-0 bg-white/98 backdrop-blur-xl pt-28 px-8">
+                              <div className="lg:hidden fixed inset-0 bg-white/98 backdrop-blur-xl pt-28 px-8 z-40">
                                     <div className="space-y-3">
                                           {navigation.map((item) => (
                                                 <button key={item.id} onClick={() => scrollToSection(item.id)} className={`block w-full text-left py-4 px-6 rounded-3xl text-lg font-medium transition-all ${activeSection === item.id ? "bg-gray-900 text-white" : "text-gray-700 hover:bg-gray-50"}`}>
