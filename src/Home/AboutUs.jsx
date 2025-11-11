@@ -1,0 +1,27 @@
+const AboutUs = () => {
+      return (
+            <section id="about" className="py-24 px-6 bg-white">
+                  <div className="max-w-6xl mx-auto">
+                        <div className="grid md:grid-cols-2 gap-16 items-center">
+                              <div className="fade-in">
+                                    <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                                          Where innovation meets <span className="italic font-serif text-blue-900">excellence</span>
+                                    </h2>
+                                    <p className="text-lg text-gray-600 leading-relaxed mb-6">The Computer Science Society (CSS) of GC University was established in 2002 by Professor Iftikhar Hussain Shah with a vision to create a platform that fosters innovation, learning, and leadership among computer science students.</p>
+                                    <p className="text-lg text-gray-600 leading-relaxed mb-8">We bridge the gap between academics and industry through workshops, competitions, and networking events that prepare students for real-world challenges.</p>
+                                    <button className="group px-8 py-4 bg-gray-900 text-white rounded-full font-medium hover:bg-gray-800 transition-all flex items-center gap-2">
+                                          Learn More
+                                          <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                                    </button>
+                              </div>
+
+                              <div className="fade-in">
+                                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop" alt="CSS Team" className="rounded-3xl w-full shadow-2xl" />
+                              </div>
+                        </div>
+                  </div>
+            </section>
+      );
+};
+
+export default AboutUs;
