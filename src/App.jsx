@@ -106,13 +106,13 @@ const App = () => {
                                     <span className="inline-block px-5 py-2 bg-white backdrop-blur border border-gray-200/60 text-gray-700 rounded-full text-sm font-medium shadow-sm">Est. 2002 • GC University Lahore</span>
                               </div>
 
-                              <h1 className="fade-in text-3xl md:text-5xl  font-bold mb-6 leading-[1.1] tracking-tight">
+                              <h1 className="fade-in text-3xl md:text-5xl   font-bold mb-6 leading-[1.1] tracking-tight">
                                     Welcome to the Computer Science Society
                                     <br />
                                     <span className="italic font-serif text-blue-900"></span>
                               </h1>
 
-                              <p className="fade-in text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed">From Curiosity to Creativity That's the CSS Way.</p>
+                              <p className="fade-in text-lg md:text-xl text-gray-600 font-semibold max-w-3xl mx-auto mb-12 leading-relaxed">From Curiosity to Creativity That's the CSS Way.</p>
 
                               <div className="fade-in flex flex-col sm:flex-row items-center justify-center gap-6">
                                     <button onClick={() => scrollToSection("events")} className="group relative px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-all shadow-lg shadow-blue-600/30 hover:shadow-xl hover:shadow-blue-600/40 flex items-center gap-3">
@@ -166,7 +166,7 @@ const App = () => {
                                     <div>
                                           <div className="flex items-center gap-2 mb-4">
                                                 <div className="w-10 h-10 bg-linear-to-br from-blue-600 to-blue-400 rounded-full flex items-center justify-center">
-                                                      <span className="text-white font-bold">CS</span>
+                                                      <img src="/public/images/logo.jpg" className="text-white font-bold" />
                                                 </div>
                                                 <span className="font-bold text-lg">CSS GCU</span>
                                           </div>
