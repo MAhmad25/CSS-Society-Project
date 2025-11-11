@@ -12,14 +12,14 @@ const Team = () => {
 
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
                               {[
-                                    { name: "Maryam Gondal", role: "President", img: "/public/images/547753449_18066317705520974_4763108498937192760_n.webp", color: "from-blue-500 to-purple-500" },
-                                    { name: "Zain Amir", role: "Vice President Operations", img: "/public/images/Zain amr.webp", color: "from-orange-400 to-pink-400" },
-                                    { name: "Laiba Akram", role: "Vice President Logistics", img: "/public/images/laiba.webp", color: "from-yellow-400 to-orange-400" },
-                                    { name: "Jibran Akhtar", role: "General Manager", img: "/public/images/Jibran.webp", color: "from-cyan-400 to-blue-400" },
-                                    { name: "Rabail Ali", role: "General Secretary", img: "/public/images/Rabail.webp", color: "from-cyan-400 to-blue-400" },
-                                    { name: "Muntaha Hamid", role: "Society Manager", img: "/public/images/muntaha.webp", color: "from-cyan-400 to-blue-400" },
-                                    { name: "Muhmmad Shahroz", role: "Event Coordinator", img: "/public/images/shehroz.webp", color: "from-cyan-400 to-blue-400" },
-                                    { name: "Faizan E Bahoo", role: "Information Secretary", img: "/public/images/faizan.webp", color: "from-cyan-400 to-blue-400" },
+                                    { name: "Maryam Gondal", role: "President", img: "/images/547753449_18066317705520974_4763108498937192760_n.webp", color: "from-blue-500 to-purple-500" },
+                                    { name: "Zain Amir", role: "Vice President Operations", img: "/images/Zain amr.webp", color: "from-orange-400 to-pink-400" },
+                                    { name: "Laiba Akram", role: "Vice President Logistics", img: "/images/laiba.webp", color: "from-yellow-400 to-orange-400" },
+                                    { name: "Jibran Akhtar", role: "General Manager", img: "/images/Jibran.webp", color: "from-cyan-400 to-blue-400" },
+                                    { name: "Rabail Ali", role: "General Secretary", img: "/images/Rabail.webp", color: "from-cyan-400 to-blue-400" },
+                                    { name: "Muntaha Hamid", role: "Society Manager", img: "/images/muntaha.webp", color: "from-cyan-400 to-blue-400" },
+                                    { name: "Muhmmad Shahroz", role: "Event Coordinator", img: "/images/shehroz.webp", color: "from-cyan-400 to-blue-400" },
+                                    { name: "Faizan E Bahoo", role: "Information Secretary", img: "/images/faizan.webp", color: "from-cyan-400 to-blue-400" },
                               ].map((member, i) => (
                                     <div key={i} className="fade-in text-center group cursor-pointer">
                                           <div className={`relative w-full aspect-square rounded-3xl overflow-hidden mb-4 bg-linear-to-br `}>
@@ -42,7 +42,7 @@ const Team = () => {
                         <div className="fade-in bg-linear-to-br from-blue-900 to-blue-700 rounded-3xl p-12 text-white">
                               <div className="grid md:grid-cols-3 gap-8 items-center">
                                     <div className="md:col-span-1">
-                                          <img src="/public/images/tauseef.webp" alt="Dr. Tauseef Iftikhar" className="rounded-2xl w-full" />
+                                          <img src="/images/tauseef.webp" alt="Dr. Tauseef Iftikhar" className="rounded-2xl w-full" />
                                     </div>
                                     <div className="md:col-span-2">
                                           <span className="inline-block px-4 py-1.5 bg-yellow-400 text-blue-900 rounded-full text-sm font-bold mb-4">Faculty Advisor</span>

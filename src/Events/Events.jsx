@@ -12,7 +12,7 @@ const Events = () => {
                         <div className="grid md:grid-cols-2 gap-8 mb-16">
                               <div className="fade-in group cursor-pointer">
                                     <div className="relative overflow-hidden rounded-3xl  aspect-4/3 mb-6">
-                                          <img className="w-full h-full object-cover" src="/public/events/1 (1).jpg" alt="" />
+                                          <img className="w-full h-full object-cover" src="/events/1 (1).jpg" alt="" />
                                           <div className="absolute inset-0 flex items-center justify-center"></div>
                                     </div>
                                     <h4 className="text-2xl font-bold mb-2">Tech Taakra 2025</h4>
@@ -22,11 +22,11 @@ const Events = () => {
 
                               <div className="fade-in group cursor-pointer">
                                     <div className="relative overflow-hidden rounded-3xl bg-linear-to-br from-blue-600 to-blue-400 aspect-4/3 mb-6">
-                                          <img className="w-full h-full object-cover" src="/public/events/1 (7).jpg" alt="" />
+                                          <img className="w-full h-full object-cover" src="/events/1 (7).jpg" alt="" />
                                     </div>
                                     <h4 className="text-2xl font-bold mb-2">Pure Logics</h4>
                                     <p className="text-gray-600 mb-3">Machine Learning & Deep Learning fundamentals</p>
-                                    <span className="text-sm text-blue-600 font-medium">Tour •  2025</span>
+                                    <span className="text-sm text-blue-600 font-medium">Tour • 2025</span>
                               </div>
                         </div>
 
