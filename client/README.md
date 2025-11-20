@@ -1,4 +1,4 @@
-# 🎓 Computer Science Society (CSS) - GC University Lahore
+# Computer Science Society (CSS) - GC University Lahore
 
 A modern, responsive website for the Computer Science Society at GC University Lahore, showcasing the society's mission, events, team members, and announcements.
 
@@ -7,17 +7,17 @@ A modern, responsive website for the Computer Science Society at GC University L
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.1.17-06B6D4)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-## ✨ Features
+## Features
 
-- **🎨 Modern Design** - Beautiful, gradient-enhanced UI with smooth animations
-- **📱 Fully Responsive** - Works seamlessly on desktop, tablet, and mobile devices
-- **⚡ Fast Performance** - Built with Vite for lightning-fast development and production builds
-- **🎯 Smooth Navigation** - Intuitive navigation with smooth scrolling between sections
-- **✨ Interactive Elements** - Hover effects, animations, and engaging components
-- **🌈 Brand Colors** - Custom color scheme reflecting CSS identity
-- **♿ Accessibility** - Semantic HTML and ARIA-compliant components
+- **Modern Design** - Beautiful, gradient-enhanced UI with smooth animations
+- **Fully Responsive** - Works seamlessly on desktop, tablet, and mobile devices
+- **Fast Performance** - Built with Vite for lightning-fast development and production builds
+- **Smooth Navigation** - Intuitive navigation with smooth scrolling between sections
+- **Interactive Elements** - Hover effects, animations, and engaging components
+- **Brand Colors** - Custom color scheme reflecting CSS identity
+- **Accessibility** - Semantic HTML and ARIA-compliant components
 
-## 📋 Sections
+## Sections
 
 ### Home
 
@@ -30,11 +30,11 @@ A modern, responsive website for the Computer Science Society at GC University L
 - Detailed mission statement
 - Core values: Creativity, Innovation, Strategy
 - Five key focus areas:
-     - 🎨 Brand Strategy
-     - 🚀 Web Development
-     - 📱 Digital Marketing
-     - 🎯 UX/UI Design
-     - 📊 Analytics & Reporting
+     - Brand Strategy
+     - Web Development
+     - Digital Marketing
+     - UX/UI Design
+     - Analytics & Reporting
 
 ### Events
 
@@ -64,7 +64,7 @@ A modern, responsive website for the Computer Science Society at GC University L
 - Easy communication channels
 - Partnership opportunities
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -106,7 +106,7 @@ This creates an optimized production build in the `dist/` directory.
 npm run preview
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 CSS-Society-Project/
@@ -138,7 +138,7 @@ CSS-Society-Project/
 └── README.md                   # This file
 ```
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - **React 19.2.0** - UI library for building interactive components
 - **Vite** - Next-generation frontend build tool
@@ -146,7 +146,7 @@ CSS-Society-Project/
 - **Lucide React** - Beautiful icon library
 - **JavaScript (ES6+)** - Modern JavaScript syntax
 
-## 🎨 Customization
+## Customization
 
 ### Colors
 
@@ -173,7 +173,7 @@ Edit component files in `src/` to update:
 - Event details
 - Contact information
 
-## 🔗 Navigation
+## Navigation
 
 The website features smooth scroll navigation with:
 
@@ -182,15 +182,15 @@ The website features smooth scroll navigation with:
 - **Smooth Scrolling** - Animated section transitions
 - **Active State Indicator** - Shows current section in navigation
 
-## 📊 Performance Optimizations
+## Performance Optimizations
 
-- ✅ Code splitting with Vite
-- ✅ Optimized images with modern formats
-- ✅ CSS purging with TailwindCSS
-- ✅ Lazy loading for components
-- ✅ Intersection Observer for animations
+- Code splitting with Vite
+- Optimized images with modern formats
+- CSS purging with TailwindCSS
+- Lazy loading for components
+- Intersection Observer for animations
 
-## 🔍 Browser Support
+## Browser Support
 
 - Chrome (latest)
 - Firefox (latest)
@@ -198,7 +198,7 @@ The website features smooth scroll navigation with:
 - Edge (latest)
 - Mobile browsers (iOS Safari, Chrome Mobile)
 
-## 📝 Scripts
+## Scripts
 
 ```bash
 # Development server
@@ -214,7 +214,7 @@ npm run preview
 npm run lint
 ```
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
@@ -224,7 +224,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📧 Contact Information
+## Contact Information
 
 - **Email**: css@gcu.edu.pk
 - **Location**: GC University Lahore, Katchery Road
@@ -235,22 +235,22 @@ Contributions are welcome! Please feel free to submit a Pull Request.
      - LinkedIn
      - GitHub
 
-## 📅 History
+## History
 
 - **Founded**: 2002
 - **Members**: 500+ active members
 - **Events Annually**: 50+
 - **Partner Companies**: 10+
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 👨‍💻 Development Team
+## Development Team
 
-**CSS Tech Team** - Crafted with 💙
+**CSS Tech Team** - Crafted with love
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - GC University Lahore for supporting the society
 - All team members and contributors
@@ -258,6 +258,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-**Made with ❤️ by the Computer Science Society**
+**Made with love by the Computer Science Society**
 
 _Last Updated: November 2025_

@@ -5,7 +5,7 @@ import Events from "./Events/Events";
 import Team from "./Team/Team";
 import Announcement from "./Announcements/Announcement";
 import Contact from "./Contact/Contact";
-import Squares from "./Squares/Squares";
+import Waves from "./Hero/IlluminatedHero";
 
 const App = () => {
       const [activeSection, setActiveSection] = useState("home");
@@ -98,30 +98,11 @@ const App = () => {
 
                   {/* Hero Section */}
                   <section id="home" className="min-h-screen relative flex items-center justify-center px-6 pt-32 pb-20">
-                        <div className="absolute inset-0">
-                              <Squares />
+                        <div className="absolute  inset-0">
+                              <Waves />
                         </div>
                         <div className="max-w-6xl mx-auto text-center">
-                              <div className="fade-in mb-8">
-                                    <span className="inline-block px-5 py-2 bg-white backdrop-blur border border-gray-200/60 text-gray-700 rounded-full text-sm font-medium shadow-sm">Est. 2002 • GC University Lahore</span>
-                              </div>
-
-                              <h1 className="fade-in text-3xl md:text-5xl   font-bold mb-6 leading-[1.1] tracking-tight">
-                                    Welcome to the Computer Science Society
-                                    <br />
-                                    <span className="italic font-serif text-blue-900"></span>
-                              </h1>
-
-                              <p className="fade-in text-lg md:text-xl text-gray-600 font-semibold max-w-3xl mx-auto mb-12 leading-relaxed">From Curiosity to Creativity That's the CSS Way.</p>
-
-                              <div className="fade-in flex flex-col sm:flex-row items-center justify-center gap-6">
-                                    <button onClick={() => scrollToSection("events")} className="group relative px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-all shadow-lg shadow-blue-600/30 hover:shadow-xl hover:shadow-blue-600/40 flex items-center gap-3">
-                                          Explore Events
-                                          <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                                                <ArrowRight className="text-blue-600 group-hover:translate-x-0.5 transition-transform" size={20} />
-                                          </div>
-                                    </button>
-                              </div>
+                              <div className="fade-in flex flex-col sm:flex-row items-center justify-center gap-6"></div>
                         </div>
                   </section>
 
@@ -129,10 +110,6 @@ const App = () => {
                   <section className="py-16 px-6 border-y border-gray-200 bg-white/50 backdrop-blur">
                         <div className="max-w-6xl mx-auto">
                               <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                                    <div className="fade-in text-center">
-                                          <div className="text-5xl font-bold text-gray-900 mb-2">+20</div>
-                                          <div className="text-sm text-gray-600">Years of Excellence</div>
-                                    </div>
                                     <div className="fade-in text-center">
                                           <div className="text-5xl font-bold text-gray-900 mb-2">+500</div>
                                           <div className="text-sm text-gray-600">Active Members</div>
@@ -349,7 +326,7 @@ const App = () => {
 
                               <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                                     <p className="text-gray-400 text-sm">© 2025 Computer Science Society, GC University Lahore</p>
-                                    <p className="text-gray-400 text-sm">Crafted with 💙 by CSS Tech Team</p>
+                                    <p className="text-gray-400 text-sm">Crafted with 💙 by CSS Tech </p>
                               </div>
                         </div>
                   </footer>
