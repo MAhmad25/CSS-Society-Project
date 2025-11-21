@@ -22,14 +22,26 @@ const app = express();
 app.use(helmet());
 
 // CORS middleware
-app.use(
-      cors({
-            origin: process.env.CORS_ORIGIN || "*",
-            methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-            credentials: true,
-            optionsSuccessStatus: 200,
-      })
-);
+const allowedOrigins = ["http://localhost:3000", "http://localhost:5173", "https://css-society-project-q6pq.vercel.app", "https://localhost:3000"];
+
+const corsOptions = {
+      origin: (origin, callback) => {
+            // Allow requests with no origin (like mobile apps or curl requests)
+            if (!origin) return callback(null, true);
+
+            if (allowedOrigins.includes(origin) || process.env.CORS_ORIGIN === origin) {
+                  callback(null, true);
+            } else {
+                  callback(null, true); // Allow all for Vercel deployment
+            }
+      },
+      methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+      credentials: true,
+      optionsSuccessStatus: 200,
+      allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+app.use(cors(corsOptions));
 
 // Body parser middleware
 app.use(express.json({ limit: "10mb" }));
@@ -37,6 +49,9 @@ app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
 // Data sanitization against NoSQL injection
 app.use(mongoSanitize());
+
+// Handle CORS preflight requests
+app.options("*", cors(corsOptions));
 
 // ==================== Routes ====================
 
