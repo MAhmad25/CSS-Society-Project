@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Events from "../Events/Events";
 import Team from "../Team/Team";
 import Announcement from "../Announcements/Announcement";
