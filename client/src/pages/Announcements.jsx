@@ -17,10 +17,10 @@ export const Announcements = () => {
       const [formData, setFormData] = useState({
             title: "",
             content: "",
-            category: "update",
+            category: "news",
       });
 
-      const categories = ["update", "event", "achievement", "announcement", "news", "other"];
+      const categories = ["news", "update", "achievement", "urgent", "other"];
 
       // Fetch Announcements
       useEffect(() => {
@@ -56,19 +56,36 @@ export const Announcements = () => {
                   return;
             }
 
+            // Additional validation for title and content length
+            if (formData.title.trim().length < 3) {
+                  setError("Title must be at least 3 characters long");
+                  return;
+            }
+
+            if (formData.content.trim().length < 10) {
+                  setError("Content must be at least 10 characters long");
+                  return;
+            }
+
             try {
+                  const dataToSend = {
+                        title: formData.title.trim(),
+                        content: formData.content.trim(),
+                        category: formData.category,
+                  };
+
                   if (editingId) {
-                        await announcementAPI.updateAnnouncement(editingId, formData);
+                        await announcementAPI.updateAnnouncement(editingId, dataToSend);
                         setEditingId(null);
                   } else {
-                        await announcementAPI.createAnnouncement(formData);
+                        await announcementAPI.createAnnouncement(dataToSend);
                   }
 
                   // Reset form and refetch
                   setFormData({
                         title: "",
                         content: "",
-                        category: "update",
+                        category: "news",
                   });
                   setShowCreateForm(false);
 
@@ -76,7 +93,14 @@ export const Announcements = () => {
                   const response = isAdmin ? await announcementAPI.getAllAnnouncementsAdmin() : await announcementAPI.getAllAnnouncements();
                   setAnnouncements(response.data.data.announcements || []);
             } catch (err) {
-                  setError(err.response?.data?.message || "Failed to save announcement");
+                  console.error("Create announcement error:", err);
+                  // Handle validation errors array
+                  if (err.response?.data?.data && Array.isArray(err.response.data.data)) {
+                        const errorMessages = err.response.data.data.map((e) => e.msg).join(", ");
+                        setError(errorMessages);
+                  } else {
+                        setError(err.response?.data?.message || "Failed to save announcement");
+                  }
             }
       };
 

@@ -76,12 +76,34 @@ export const Team = () => {
                   return;
             }
 
+            // Additional validation for name length
+            if (formData.name.trim().length < 2) {
+                  setError("Name must be at least 2 characters long");
+                  return;
+            }
+
+            // Basic email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(formData.email.trim())) {
+                  setError("Please provide a valid email address");
+                  return;
+            }
+
             try {
+                  const dataToSend = {
+                        name: formData.name.trim(),
+                        email: formData.email.trim(),
+                        position: formData.position,
+                        phone: formData.phone.trim() || undefined,
+                        bio: formData.bio.trim() || undefined,
+                        socialLinks: formData.socialLinks,
+                  };
+
                   if (editingId) {
-                        await teamAPI.updateTeamMember(editingId, formData);
+                        await teamAPI.updateTeamMember(editingId, dataToSend);
                         setEditingId(null);
                   } else {
-                        await teamAPI.createTeamMember(formData);
+                        await teamAPI.createTeamMember(dataToSend);
                   }
 
                   // Reset form and refetch
@@ -104,7 +126,14 @@ export const Team = () => {
                   const response = await teamAPI.getAllTeamMembers();
                   setMembers(response.data.data.teamMembers || []);
             } catch (err) {
-                  setError(err.response?.data?.message || "Failed to save team member");
+                  console.error("Create team member error:", err);
+                  // Handle validation errors array
+                  if (err.response?.data?.data && Array.isArray(err.response.data.data)) {
+                        const errorMessages = err.response.data.data.map((e) => e.msg).join(", ");
+                        setError(errorMessages);
+                  } else {
+                        setError(err.response?.data?.message || "Failed to save team member");
+                  }
             }
       };
 

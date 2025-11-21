@@ -1,4 +1,5 @@
 import { Mail, Users, Calendar, Facebook, Instagram, Linkedin, Github } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
       return (
@@ -28,18 +29,15 @@ const Contact = () => {
                         </div>
 
                         <div className="fade-in flex justify-center gap-4">
-                              <a href="#" className="w-14 h-14 bg-gray-900 hover:bg-gray-800 rounded-full flex items-center justify-center transition-all">
+                              <Link to="https://www.facebook.com/CSSGCU" target="__blank" className="w-14 h-14 bg-gray-900 hover:bg-gray-800 rounded-full flex items-center justify-center transition-all">
                                     <Facebook className="text-white" size={22} />
-                              </a>
-                              <a href="#" className="w-14 h-14 bg-gray-900 hover:bg-gray-800 rounded-full flex items-center justify-center transition-all">
+                              </Link>
+                              <Link to="https://www.instagram.com/css.gcu?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="__blank" className="w-14 h-14 bg-gray-900 hover:bg-gray-800 rounded-full flex items-center justify-center transition-all">
                                     <Instagram className="text-white" size={22} />
-                              </a>
-                              <a href="#" className="w-14 h-14 bg-gray-900 hover:bg-gray-800 rounded-full flex items-center justify-center transition-all">
+                              </Link>
+                              <Link to="https://www.linkedin.com/company/computer-science-society-gcu/about/" target="__blank" className="w-14 h-14 bg-gray-900 hover:bg-gray-800 rounded-full flex items-center justify-center transition-all">
                                     <Linkedin className="text-white" size={22} />
-                              </a>
-                              <a href="#" className="w-14 h-14 bg-gray-900 hover:bg-gray-800 rounded-full flex items-center justify-center transition-all">
-                                    <Github className="text-white" size={22} />
-                              </a>
+                              </Link>
                         </div>
                   </div>
             </section>

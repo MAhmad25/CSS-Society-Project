@@ -14,9 +14,43 @@ const validateChangePassword = [
 ];
 
 // Event validation
-const validateCreateEvent = [body("title").trim().notEmpty().withMessage("Event title is required").isLength({ min: 3 }).withMessage("Title must be at least 3 characters"), body("description").trim().notEmpty().withMessage("Event description is required").isLength({ min: 10 }).withMessage("Description must be at least 10 characters"), body("date").isISO8601().withMessage("Please provide a valid date"), body("location").trim().notEmpty().withMessage("Event location is required"), body("category").optional().isIn(["workshop", "competition", "seminar", "hackathon", "networking", "other"]).withMessage("Invalid category"), body("maxParticipants").optional().isInt({ min: 1 }).withMessage("Max participants must be a positive number")];
+const validateCreateEvent = [
+      body("title").trim().notEmpty().withMessage("Event title is required").isLength({ min: 3 }).withMessage("Title must be at least 3 characters"),
+      body("description").trim().notEmpty().withMessage("Event description is required").isLength({ min: 10 }).withMessage("Description must be at least 10 characters"),
+      body("date")
+            .notEmpty()
+            .withMessage("Event date is required")
+            .custom((value) => {
+                  const date = new Date(value);
+                  if (isNaN(date.getTime())) {
+                        throw new Error("Please provide a valid date");
+                  }
+                  return true;
+            })
+            .withMessage("Please provide a valid date"),
+      body("location").trim().notEmpty().withMessage("Event location is required"),
+      body("category").optional().isIn(["workshop", "competition", "seminar", "hackathon", "networking", "other"]).withMessage("Invalid category"),
+      body("maxParticipants").optional().isInt({ min: 1 }).withMessage("Max participants must be a positive number"),
+];
 
-const validateUpdateEvent = [body("title").optional().trim().isLength({ min: 3 }).withMessage("Title must be at least 3 characters"), body("description").optional().trim().isLength({ min: 10 }).withMessage("Description must be at least 10 characters"), body("date").optional().isISO8601().withMessage("Please provide a valid date"), body("location").optional().trim(), body("category").optional().isIn(["workshop", "competition", "seminar", "hackathon", "networking", "other"]).withMessage("Invalid category"), body("status").optional().isIn(["upcoming", "ongoing", "completed", "cancelled"]).withMessage("Invalid status")];
+const validateUpdateEvent = [
+      body("title").optional().trim().isLength({ min: 3 }).withMessage("Title must be at least 3 characters"),
+      body("description").optional().trim().isLength({ min: 10 }).withMessage("Description must be at least 10 characters"),
+      body("date")
+            .optional()
+            .custom((value) => {
+                  if (!value) return true;
+                  const date = new Date(value);
+                  if (isNaN(date.getTime())) {
+                        throw new Error("Please provide a valid date");
+                  }
+                  return true;
+            })
+            .withMessage("Please provide a valid date"),
+      body("location").optional().trim(),
+      body("category").optional().isIn(["workshop", "competition", "seminar", "hackathon", "networking", "other"]).withMessage("Invalid category"),
+      body("status").optional().isIn(["upcoming", "ongoing", "completed", "cancelled"]).withMessage("Invalid status"),
+];
 
 // Announcement validation
 const validateCreateAnnouncement = [body("title").trim().notEmpty().withMessage("Announcement title is required").isLength({ min: 3 }).withMessage("Title must be at least 3 characters"), body("content").trim().notEmpty().withMessage("Announcement content is required").isLength({ min: 10 }).withMessage("Content must be at least 10 characters"), body("category").optional().isIn(["news", "update", "achievement", "urgent", "other"]).withMessage("Invalid category")];

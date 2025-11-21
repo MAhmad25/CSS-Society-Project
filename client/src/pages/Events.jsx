@@ -24,6 +24,7 @@ export const Events = () => {
             location: "",
             category: "workshop",
             maxParticipants: "",
+            status: "upcoming",
       });
 
       const categories = ["workshop", "competition", "seminar", "hackathon", "networking", "other"];
@@ -66,12 +67,32 @@ export const Events = () => {
                   return;
             }
 
+            // Additional validation for title and description length
+            if (formData.title.trim().length < 3) {
+                  setError("Title must be at least 3 characters long");
+                  return;
+            }
+
+            if (formData.description.trim().length < 10) {
+                  setError("Description must be at least 10 characters long");
+                  return;
+            }
+
             try {
                   // Clean up form data - remove empty maxParticipants
                   const dataToSend = {
-                        ...formData,
+                        title: formData.title.trim(),
+                        description: formData.description.trim(),
+                        date: formData.date,
+                        location: formData.location.trim(),
+                        category: formData.category,
                         maxParticipants: formData.maxParticipants ? parseInt(formData.maxParticipants, 10) : undefined,
                   };
+
+                  // Only include status if editing
+                  if (editingId) {
+                        dataToSend.status = formData.status;
+                  }
 
                   if (editingId) {
                         await eventAPI.updateEvent(editingId, dataToSend);
@@ -88,6 +109,7 @@ export const Events = () => {
                         location: "",
                         category: "workshop",
                         maxParticipants: "",
+                        status: "upcoming",
                   });
                   setShowCreateForm(false);
 
@@ -100,7 +122,14 @@ export const Events = () => {
                         document.getElementById("events-grid")?.scrollIntoView({ behavior: "smooth", block: "start" });
                   }, 100);
             } catch (err) {
-                  setError(err.response?.data?.message || "Failed to save event");
+                  console.error("Create event error:", err);
+                  // Handle validation errors array
+                  if (err.response?.data?.data && Array.isArray(err.response.data.data)) {
+                        const errorMessages = err.response.data.data.map((e) => e.msg).join(", ");
+                        setError(errorMessages);
+                  } else {
+                        setError(err.response?.data?.message || "Failed to save event");
+                  }
             }
       };
 
@@ -127,7 +156,7 @@ export const Events = () => {
                   location: event.location,
                   category: event.category,
                   maxParticipants: event.maxParticipants,
-                  image: event.image || "",
+                  status: event.status || "upcoming",
             });
             setEditingId(event._id);
             setShowCreateForm(true);
@@ -208,6 +237,20 @@ export const Events = () => {
                                                       <label className="block text-sm font-medium text-gray-700 mb-2">Max Participants</label>
                                                       <input type="number" name="maxParticipants" value={formData.maxParticipants} onChange={handleFormChange} placeholder="Leave empty for unlimited" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" />
                                                 </div>
+
+                                                {/* Status (only when editing) */}
+                                                {editingId && (
+                                                      <div>
+                                                            <label className="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                                                            <select name="status" value={formData.status} onChange={handleFormChange} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none">
+                                                                  {statuses.map((status) => (
+                                                                        <option key={status} value={status}>
+                                                                              {status.charAt(0).toUpperCase() + status.slice(1)}
+                                                                        </option>
+                                                                  ))}
+                                                            </select>
+                                                      </div>
+                                                )}
                                           </div>
                                           {/* Description */}
                                           <div>
