@@ -92,13 +92,13 @@ const startServer = async () => {
             await createAdminUser();
 
             // Start server
-            app.listen("https://css-society-project-ty9c.vercel.app/", () => {
+            app.listen(PORT, () => {
                   console.log("\n" + "=".repeat(50));
                   console.log("🚀 CSS Society API Server Started");
                   console.log("=".repeat(50));
-                  console.log(`📍 Server Running on: http://localhost:${PORT}`);
+                  console.log(`📍 Server Running on Port: ${PORT}`);
                   console.log(`🌍 Environment: ${NODE_ENV}`);
-                  console.log(`📚 API Base URL: http://localhost:${PORT}/api`);
+                  console.log(`📚 API Base URL: /api`);
                   console.log("=".repeat(50) + "\n");
             });
       } catch (error) {
