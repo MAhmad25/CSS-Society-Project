@@ -92,7 +92,7 @@ const startServer = async () => {
             await createAdminUser();
 
             // Start server
-            app.listen(PORT, () => {
+            app.listen("https://css-society-project-ty9c.vercel.app/", () => {
                   console.log("\n" + "=".repeat(50));
                   console.log("🚀 CSS Society API Server Started");
                   console.log("=".repeat(50));
