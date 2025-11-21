@@ -36,19 +36,6 @@ Password: Admin@123456
 
 ---
 
-## 📚 Documentation Quick Links
-
-| Document                   | Purpose              | Read Time |
-| -------------------------- | -------------------- | --------- |
-| **QUICK_START.md**         | Get running in 5 min | 5 min     |
-| **server/README.md**       | Complete guide       | 20 min    |
-| **API_DOCUMENTATION.md**   | All endpoints        | 30 min    |
-| **VISUAL_GUIDE.md**        | Architecture         | 15 min    |
-| **VERIFICATION.md**        | Verify setup         | 10 min    |
-| **DOCUMENTATION_INDEX.md** | Find what you need   | 10 min    |
-
----
-
 ## 📂 What's Where
 
 ### **Server Code** (`/server/`)
