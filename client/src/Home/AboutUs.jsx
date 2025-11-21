@@ -1,3 +1,5 @@
+import { ArrowRight } from "lucide-react";
+
 const AboutUs = () => {
       return (
             <section id="about" className="py-24 px-6 bg-white">
