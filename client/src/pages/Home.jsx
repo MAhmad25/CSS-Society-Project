@@ -39,13 +39,16 @@ export const Home = () => {
                         <div className="absolute inset-0  flex flex-col justify-center items-center">
                               <div className="absolute  w-full px-5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none sm:w-1/2 text-center space-y-10 pt-10 inset-0  flex flex-col justify-center items-center">
                                     <h1
-                                          className="animate-fade-in text-center -translate-y-4 text-balance 
-          text-5xl font-semibold leading-none tracking-tighter 
-        text-linear-to-b from-black to-black/40  md:text-7xl 
-        "
+                                          className="
+    animate-fade-in text-center -translate-y-4
+    text-5xl md:text-7xl font-semibold leading-none tracking-tighter
+    bg-clip-text text-transparent
+    bg-linear-to-b from-gray-900 to-gray-700
+    dark:from-gray-900 dark:to-gray-400
+  "
                                     >
                                           Join the Computer Science Society
-                                    </h1>
+                                    </h1>{" "}
                                     <p className="text-center text-pretty">Learn with peers, work on real projects, and get mentorship that helps you land internships and build a stronger portfolio. We turn curiosity into real skills fast.</p>
                               </div>
                               <DotScreenShader />
