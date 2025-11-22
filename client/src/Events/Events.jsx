@@ -6,42 +6,87 @@ const items = [
       {
             id: 1,
             url: "/events/1 (1).jpg",
-            title: "Misty Mountain Majesty",
+            title: "Pictures",
       },
       {
             id: 2,
             url: "/events/1 (2).jpg",
-            title: "Winter Wonderland",
+            title: "Pictures",
       },
       {
             id: 3,
             url: "/events/1 (3).jpg",
-            title: "Autumn Mountain Retreat",
+            title: "Pictures",
       },
       {
             id: 4,
             url: "/events/1 (4).jpg",
-            title: "Tranquil Lake Reflection",
+            title: "Pictures",
       },
       {
             id: 5,
             url: "/events/1 (5).jpg",
-            title: "Misty Mountain Peaks",
+            title: "Pictures",
       },
       {
             id: 6,
             url: "/events/1 (6).jpg",
-            title: "Golden Hour Glow",
+            title: "Pictures",
       },
       {
             id: 7,
             url: "/events/1 (7).jpg",
-            title: "Snowy Mountain Highway",
+            title: "Pictures",
       },
       {
             id: 8,
             url: "/events/1 (8).jpg",
-            title: "Foggy Mountain Forest",
+            title: "Pictures",
+      },
+      {
+            id: 9,
+            url: "/events/1 (9).jpg",
+            title: "Pictures",
+      },
+      {
+            id: 10,
+            url: "/events/1 (10).webp",
+            title: "Pictures",
+      },
+      {
+            id: 11,
+            url: "/events/1 (11).webp",
+            title: "Pictures",
+      },
+      {
+            id: 12,
+            url: "/events/1 (12).webp",
+            title: "Pictures",
+      },
+      {
+            id: 13,
+            url: "/events/1 (13).webp",
+            title: "Pictures",
+      },
+      {
+            id: 14,
+            url: "/events/1 (14).webp",
+            title: "Pictures",
+      },
+      {
+            id: 15,
+            url: "/events/1 (15).webp",
+            title: "Pictures",
+      },
+      {
+            id: 16,
+            url: "/events/1 (16).webp",
+            title: "Pictures",
+      },
+      {
+            id: 17,
+            url: "/events/1 (17).webp",
+            title: "Pictures",
       },
 ];
 
