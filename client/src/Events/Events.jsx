@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 const Events = () => {
       return (
             <section id="events" className="py-24 px-6">
@@ -36,11 +37,10 @@ const Events = () => {
                                     <p className="text-gray-300 text-lg">Start your creative journey with Us!</p>
                               </div>
                               <div className="flex gap-4">
-                                    <button className="px-8 py-4 bg-white text-gray-900 rounded-full font-medium hover:bg-gray-100 transition-all flex items-center gap-2">
+                                    <Link to="/team" className="px-8 py-4 bg-white text-gray-900 rounded-full font-medium hover:bg-gray-100 transition-all flex items-center gap-2">
                                           Get Started
                                           <ArrowRight size={18} />
-                                    </button>
-                                    <button className="px-8 py-4 border-2 border-white text-white rounded-full font-medium hover:bg-white hover:text-gray-900 transition-all">View Portfolio</button>
+                                    </Link>
                               </div>
                         </div>
                   </div>
