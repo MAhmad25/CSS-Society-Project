@@ -75,7 +75,7 @@ const clipPathVariants = {
 };
 
 const HoverSliderImageWrap = forwardRef(({ className, ...props }, ref) => {
-      return <div ref={ref} className={`grid overflow-hidden [&>*]:col-start-1 [&>*]:col-end-1 [&>*]:row-start-1 [&>*]:row-end-1 [&>*]:size-full ${className || ""}`} {...props} />;
+      return <div ref={ref} className={`grid  [&>*]:col-start-1 [&>*]:col-end-1 [&>*]:row-start-1 [&>*]:row-end-1 [&>*]:size-full ${className || ""}`} {...props} />;
 });
 HoverSliderImageWrap.displayName = "HoverSliderImageWrap";
 
@@ -98,22 +98,22 @@ const TEAM_MEMBERS = [
 
 export default function Team() {
       return (
-            <HoverSlider className="min-h-screen flex flex-col gap-5 items-center justify-center p-6 md:px-12">
+            <HoverSlider className="min-h-screen overflow-hidden flex flex-col gap-5 items-center justify-center p-6 md:px-12">
                   <div className="max-w-7xl w-full">
                         <h1 className="mb-20 text-5xl font-medium text-center capitalize font-Regular tracking-wide">Meat Our Team</h1>
-                        <div className="flex  items-center  justify-evenly gap-6 md:gap-12">
+                        <div className="flex flex-wrap items-center justify-evenly gap-6 md:gap-12">
                               <div className="flex flex-col space-y-2 md:space-y-4">
                                     {TEAM_MEMBERS.map((member, index) => (
                                           <div key={member.name} className="flex flex-col">
-                                                <TextStaggerHover index={index} className="cursor-pointer selection:bg-gray-300 text-xl md:text-4xl font-bold uppercase tracking-tighter text-white" text={member.name} />
+                                                <TextStaggerHover index={index} className="cursor-pointer selection:bg-gray-300 text-3xl md:text-4xl font-bold uppercase tracking-tighter text-white" text={member.name} />
                                                 <span className="text-sm  ml-1">{member.role}</span>
                                           </div>
                                     ))}
                               </div>
                               <HoverSliderImageWrap>
                                     {TEAM_MEMBERS.map((member, index) => (
-                                          <div key={member.name} className="relative">
-                                                <HoverSliderImage index={index} imageUrl={member.img} src={member.img} alt={member.name} className="size-full max-h-96 w-80 object-cover rounded-lg shadow-2xl" loading="eager" decoding="async" />
+                                          <div key={member.name} className="relative -top-[200%]  sm:inset-0 -right-36">
+                                                <HoverSliderImage index={index} imageUrl={member.img} src={member.img} alt={member.name} className="size-full max-h-96 sm:w-80 w-40 object-cover rounded-lg shadow-2xl" loading="eager" decoding="async" />
                                                 <div className={`absolute inset-0  opacity-20 rounded-lg`}></div>
                                           </div>
                                     ))}
