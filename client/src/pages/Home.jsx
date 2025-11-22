@@ -126,13 +126,13 @@ export const Home = () => {
                                           <div className="p-6 rounded-xl border border-gray-100 bg-white shadow-sm">
                                                 <h4 className="font-medium text-gray-900 mb-3">Follow Us</h4>
                                                 <div className="flex items-center gap-4">
-                                                      <Link to="https://www.facebook.com/CSSGCU" className="text-gray-600 hover:text-blue-600" href="#" aria-label="Facebook">
+                                                      <Link to="https://www.facebook.com/CSSGCU" target="__blank" className="text-gray-600 hover:text-blue-600" href="#" aria-label="Facebook">
                                                             Facebook
                                                       </Link>
-                                                      <Link to="https://www.instagram.com/css.gcu?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="text-gray-600 hover:text-blue-600" href="#" aria-label="Instagram">
+                                                      <Link to="https://www.instagram.com/css.gcu?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="__blank" className="text-gray-600 hover:text-blue-600" href="#" aria-label="Instagram">
                                                             Instagram
                                                       </Link>
-                                                      <Link to="https://www.linkedin.com/company/computer-science-society-gcu/about/" className="text-gray-600 hover:text-blue-600" href="#" aria-label="LinkedIn">
+                                                      <Link to="https://www.linkedin.com/company/computer-science-society-gcu/about/" target="__blank" className="text-gray-600 hover:text-blue-600" href="#" aria-label="LinkedIn">
                                                             LinkedIn
                                                       </Link>
                                                 </div>

@@ -13,7 +13,7 @@ const AboutUs = () => {
                                     <p className="text-lg text-gray-600 leading-relaxed mb-8">We bridge the gap between academics and industry through workshops, competitions, and networking events that prepare students for real-world challenges.</p>
                               </div>
                               <div className="fade-in">
-                                    <img src="/events/1 (2).jpg" alt="CSS Team" className="rounded-3xl w-full shadow-2xl" />
+                                    <img src="/images/gc.jpg" alt="CSS Team" className="rounded-3xl w-full shadow-2xl" />
                               </div>
                         </div>
                   </div>
