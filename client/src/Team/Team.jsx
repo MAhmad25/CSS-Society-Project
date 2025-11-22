@@ -112,8 +112,8 @@ export default function Team() {
                               </div>
                               <HoverSliderImageWrap>
                                     {TEAM_MEMBERS.map((member, index) => (
-                                          <div key={member.name} className="relative -top-[200%]  sm:inset-0 -right-30">
-                                                <HoverSliderImage index={index} imageUrl={member.img} src={member.img} alt={member.name} className="size-full max-h-96 sm:w-80 w-40 object-cover rounded-lg shadow-2xl" loading="eager" decoding="async" />
+                                          <div key={member.name} className="relative -top-[250%]  sm:inset-0 -right-30">
+                                                <HoverSliderImage index={index} imageUrl={member.img} src={member.img} alt={member.name} className="size-full max-h-96 sm:w-80 w-30 object-cover rounded-lg shadow-2xl" loading="eager" decoding="async" />
                                                 <div className={`absolute inset-0  opacity-20 rounded-lg`}></div>
                                           </div>
                                     ))}
