@@ -101,11 +101,11 @@ export default function Team() {
             <HoverSlider className="min-h-screen flex flex-col gap-5 items-center justify-center p-6 md:px-12">
                   <div className="max-w-7xl w-full">
                         <h1 className="mb-20 text-5xl font-medium text-center capitalize font-Regular tracking-wide">Meat Our Team</h1>
-                        <div className="flex flex-wrap items-center justify-evenly gap-6 md:gap-12">
+                        <div className="flex  items-center  justify-evenly gap-6 md:gap-12">
                               <div className="flex flex-col space-y-2 md:space-y-4">
                                     {TEAM_MEMBERS.map((member, index) => (
                                           <div key={member.name} className="flex flex-col">
-                                                <TextStaggerHover index={index} className="cursor-pointer text-3xl md:text-4xl font-bold uppercase tracking-tighter text-white" text={member.name} />
+                                                <TextStaggerHover index={index} className="cursor-pointer selection:bg-gray-300 text-xl md:text-4xl font-bold uppercase tracking-tighter text-white" text={member.name} />
                                                 <span className="text-sm  ml-1">{member.role}</span>
                                           </div>
                                     ))}
