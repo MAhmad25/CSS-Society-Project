@@ -4,7 +4,7 @@ const MissionVision = () => {
       return (
             <section id="about" className="py-24 px-6">
                   <div className="max-w-5xl mx-auto text-center">
-                        <h2 className="fade-in text-5xl  font-bold mb-8 leading-tight">
+                        <h2 className="fade-in text-3xl sm:text-5xl  font-bold mb-8 leading-tight">
                               Crafting exceptional, well-experienced & technology driven strategies to drive <span className="italic font-serif text-blue-900">impactful results</span>
                         </h2>
 
