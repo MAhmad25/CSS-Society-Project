@@ -6,6 +6,7 @@ import Contact from "../Contact/Contact";
 import MissionVision from "../Home/MissionVision";
 import AboutUS from "../Home/AboutUs";
 import { Link } from "react-router-dom";
+import { DotScreenShader } from "../components/DotGradient";
 
 export const Home = () => {
       useEffect(() => {
@@ -34,12 +35,20 @@ export const Home = () => {
       return (
             <div className="min-h-screen bg-linear-to-br from-blue-50 via-white to-yellow-50 text-gray-900">
                   {/* Hero Section */}
-                  <section id="home" className="min-h-screen relative flex items-center justify-center px-6 pt-32 pb-20">
-                        <div className="absolute inset-0">
-                              <video loop autoPlay muted preload="auto" className="w-full h-full object-cover" src="/video.mp4" aria-hidden="true" />
-                        </div>
-                        <div className="max-w-6xl mx-auto text-center">
-                              <div className="fade-in flex flex-col sm:flex-row items-center justify-center gap-6"></div>
+                  <section id="home" className="min-h-screen relative overflow-hidden flex items-center justify-center px-6 pt-32 pb-20 rounded-b-xl">
+                        <div className="absolute inset-0  flex flex-col justify-center items-center">
+                              <div className="absolute  w-full px-5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none sm:w-1/2 text-center space-y-10 pt-10 inset-0  flex flex-col justify-center items-center">
+                                    <h1
+                                          className="animate-fade-in text-center -translate-y-4 text-balance 
+          text-5xl font-semibold leading-none tracking-tighter 
+        text-linear-to-b from-black to-black/40  md:text-7xl 
+        "
+                                    >
+                                          Join the Computer Science Society
+                                    </h1>
+                                    <p className="text-center text-pretty">Learn with peers, work on real projects, and get mentorship that helps you land internships and build a stronger portfolio. We turn curiosity into real skills fast.</p>
+                              </div>
+                              <DotScreenShader />
                         </div>
                   </section>
 
