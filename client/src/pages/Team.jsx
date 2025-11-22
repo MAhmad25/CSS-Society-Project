@@ -178,8 +178,8 @@ export const Team = () => {
                         {/* Header */}
                         <div className="flex justify-between items-center mb-8">
                               <div>
-                                    <h1 className="text-4xl font-bold text-gray-900">Our Team</h1>
-                                    <p className="text-gray-600 mt-2">Meet the amazing people behind CSS Society</p>
+                                    <h1 className="text-4xl font-bold text-gray-900">Our CSS Members</h1>
+                                    <p className="text-gray-600 mt-2">Meet the amazing CSS Members behind CSS Society</p>
                               </div>
                               {isAdmin && (
                                     <button
@@ -308,8 +308,8 @@ export const Team = () => {
                         ) : activemembers.length === 0 ? (
                               <div className="bg-white rounded-xl shadow-lg p-12 text-center border border-gray-200">
                                     <Users size={40} className="mx-auto text-gray-400 mb-4" />
-                                    <h3 className="text-xl font-bold text-gray-900">No team members yet</h3>
-                                    <p className="text-gray-600 mt-2">Team members will appear here</p>
+                                    <h3 className="text-xl font-bold text-gray-900">No css members yet</h3>
+                                    <p className="text-gray-600 mt-2">CSS members will appear here</p>
                               </div>
                         ) : (
                               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">

@@ -34,7 +34,7 @@ export const Header = () => {
                                           News
                                     </Link>
                                     <Link to="/team" className="text-gray-600 hover:text-gray-900 font-medium">
-                                          Team
+                                          CSS Members
                                     </Link>
                               </nav>
 

@@ -1,5 +1,10 @@
 @import "tailwindcss";
+@font-face {
+      font-family: Regular;
+      src: url(/fonts/regular.woff2);
+}
 @theme {
+      --font-Regular: "Regular";
       --color-blue: #003366;
       --color-gold: #ffd700;
 }
