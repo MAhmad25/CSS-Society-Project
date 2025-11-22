@@ -1,51 +1,113 @@
-import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
-const Events = () => {
+"use client";
+import React, { useEffect, useRef, useState } from "react";
+import { motion, useMotionValue, animate } from "motion/react";
+
+const items = [
+      {
+            id: 1,
+            url: "/events/1 (1).jpg",
+            title: "Misty Mountain Majesty",
+      },
+      {
+            id: 2,
+            url: "/events/1 (2).jpg",
+            title: "Winter Wonderland",
+      },
+      {
+            id: 3,
+            url: "/events/1 (3).jpg",
+            title: "Autumn Mountain Retreat",
+      },
+      {
+            id: 4,
+            url: "/events/1 (4).jpg",
+            title: "Tranquil Lake Reflection",
+      },
+      {
+            id: 5,
+            url: "/events/1 (5).jpg",
+            title: "Misty Mountain Peaks",
+      },
+      {
+            id: 6,
+            url: "/events/1 (6).jpg",
+            title: "Golden Hour Glow",
+      },
+      {
+            id: 7,
+            url: "/events/1 (7).jpg",
+            title: "Snowy Mountain Highway",
+      },
+      {
+            id: 8,
+            url: "/events/1 (8).jpg",
+            title: "Foggy Mountain Forest",
+      },
+];
+
+export default function Events() {
+      const [index, setIndex] = useState(0);
+      const containerRef = useRef(null);
+
+      const x = useMotionValue(0);
+
+      useEffect(() => {
+            if (containerRef.current) {
+                  const containerWidth = containerRef.current.offsetWidth || 1;
+                  const targetX = -index * containerWidth;
+
+                  animate(x, targetX, {
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 30,
+                  });
+            }
+      }, [index, x]);
+
       return (
-            <section id="events" className="py-24 px-6">
-                  <div className="max-w-6xl mx-auto">
-                        <div className="text-center mb-16">
-                              <h2 className="fade-in text-4xl md:text-6xl font-bold mb-4">
-                                    How we transformed a small society's <span className="italic font-serif text-blue-900">online presence</span>
-                              </h2>
-                        </div>
+            <div className="lg:p-10 sm:p-4 p-2  max-w-4xl mx-auto">
+                  <h1 className="text-3xl sm:text-5xl font-bold font-Regular mb-10 text-center">Slide Through Our Successful Events</h1>
+                  <div className="flex flex-col gap-3">
+                        <div className="relative overflow-hidden rounded-lg" ref={containerRef}>
+                              <motion.div className="flex" style={{ x }}>
+                                    {items.map((item) => (
+                                          <div key={item.id} className="shrink-0 w-full h-[500px]">
+                                                <img src={item.url} alt={item.title} className="w-full h-full object-cover rounded-lg select-none pointer-events-none" draggable={false} />
+                                          </div>
+                                    ))}
+                              </motion.div>
 
-                        <div className="grid md:grid-cols-2 gap-8 mb-16">
-                              <div className="fade-in group cursor-pointer">
-                                    <div className="relative overflow-hidden rounded-3xl  aspect-4/3 mb-6">
-                                          <img className="w-full h-full object-cover" src="/events/1 (1).jpg" alt="" />
-                                          <div className="absolute inset-0 flex items-center justify-center"></div>
-                                    </div>
-                                    <h4 className="text-2xl font-bold mb-2">Tech Taakra 2025</h4>
-                                    <p className="text-gray-600 mb-3">Web dev, app dev & innovation challenges</p>
-                                    <span className="text-sm text-blue-600 font-medium">Competition • March 2025</span>
-                              </div>
+                              {/* Navigation Buttons */}
+                              <motion.button
+                                    disabled={index === 0}
+                                    onClick={() => setIndex((i) => Math.max(0, i - 1))}
+                                    className={`absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-transform z-10
+              ${index === 0 ? "opacity-40 cursor-not-allowed" : "bg-white hover:scale-110 hover:opacity-100 opacity-70"}`}
+                              >
+                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                    </svg>
+                              </motion.button>
 
-                              <div className="fade-in group cursor-pointer">
-                                    <div className="relative overflow-hidden rounded-3xl bg-linear-to-br from-blue-600 to-blue-400 aspect-4/3 mb-6">
-                                          <img className="w-full h-full object-cover" src="/events/1 (7).jpg" alt="" />
-                                    </div>
-                                    <h4 className="text-2xl font-bold mb-2">Pure Logics</h4>
-                                    <p className="text-gray-600 mb-3">Machine Learning & Deep Learning fundamentals</p>
-                                    <span className="text-sm text-blue-600 font-medium">Tour • 2025</span>
-                              </div>
-                        </div>
-
-                        <div className="fade-in bg-gray-900 text-white rounded-3xl p-12 flex flex-col md:flex-row items-center justify-between gap-8">
-                              <div>
-                                    <h3 className="text-3xl font-bold mb-4">See our work in action.</h3>
-                                    <p className="text-gray-300 text-lg">Start your creative journey with Us!</p>
-                              </div>
-                              <div className="flex gap-4">
-                                    <Link to="/team" className="px-8 py-4 bg-white text-gray-900 rounded-full font-medium hover:bg-gray-100 transition-all flex items-center gap-2">
-                                          Get Started
-                                          <ArrowRight size={18} />
-                                    </Link>
+                              {/* Next Button */}
+                              <motion.button
+                                    disabled={index === items.length - 1}
+                                    onClick={() => setIndex((i) => Math.min(items.length - 1, i + 1))}
+                                    className={`absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-transform z-10
+              ${index === items.length - 1 ? "opacity-40 cursor-not-allowed" : "bg-white hover:scale-110 hover:opacity-100 opacity-70"}`}
+                              >
+                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                    </svg>
+                              </motion.button>
+                              {/* Progress Indicator */}
+                              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 p-2 bg-white/20 rounded-xl border border-white/30">
+                                    {items.map((_, i) => (
+                                          <button key={i} onClick={() => setIndex(i)} className={`h-2 rounded-full transition-all ${i === index ? "w-8 bg-white" : "w-2 bg-white/50"}`} />
+                                    ))}
                               </div>
                         </div>
                   </div>
-            </section>
+            </div>
       );
-};
-
-export default Events;
+}
