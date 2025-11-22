@@ -3,8 +3,9 @@ import { Calendar, MapPin, Users, Edit, Trash2, Plus, Filter, X, Loader, Eye } f
 import { eventAPI } from "../services/api";
 import { useAuth } from "../context/useAuth";
 import { DetailModal } from "../components/DetailModal";
-
+import useScrollTop from "../hooks/useScrollTop";
 export const Events = () => {
+      useScrollTop();
       const [events, setEvents] = useState([]);
       console.log(events);
       const [loading, setLoading] = useState(true);

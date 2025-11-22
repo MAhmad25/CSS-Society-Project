@@ -3,8 +3,9 @@ import { Users, Github, Linkedin, Twitter, Plus, Edit, Trash2, Loader, AlertCirc
 import { teamAPI } from "../services/api";
 import { useAuth } from "../context/useAuth";
 import { DetailModal } from "../components/DetailModal";
-
+import useScrollTop from "../hooks/useScrollTop";
 export const Team = () => {
+      useScrollTop();
       const [members, setMembers] = useState([]);
       const [loading, setLoading] = useState(true);
       const [showCreateForm, setShowCreateForm] = useState(false);

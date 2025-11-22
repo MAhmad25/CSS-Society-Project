@@ -3,8 +3,10 @@ import { MessageSquare, Pin, Edit, Trash2, Plus, Loader, AlertCircle, Eye } from
 import { announcementAPI } from "../services/api";
 import { useAuth } from "../context/useAuth";
 import { DetailModal } from "../components/DetailModal";
+import useScrollTop from "../hooks/useScrollTop";
 
 export const Announcements = () => {
+      useScrollTop();
       const [announcements, setAnnouncements] = useState([]);
       const [loading, setLoading] = useState(true);
       const [showCreateForm, setShowCreateForm] = useState(false);

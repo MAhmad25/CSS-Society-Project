@@ -2,11 +2,11 @@ import { useState } from "react";
 import { User, Mail, Lock, Trash2, AlertCircle, Loader } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/useAuth";
-
+import useScrollTop from "../hooks/useScrollTop";
 export const Profile = () => {
+      useScrollTop();
       const { user, updateProfile, changePassword, logout } = useAuth();
       const navigate = useNavigate();
-
       const [activeTab, setActiveTab] = useState("profile");
       const [error, setError] = useState("");
       const [success, setSuccess] = useState("");

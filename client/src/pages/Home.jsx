@@ -7,8 +7,10 @@ import MissionVision from "../Home/MissionVision";
 import AboutUS from "../Home/AboutUs";
 import { Link } from "react-router-dom";
 import { DotScreenShader } from "../components/DotGradient";
+import useScrollTop from "../hooks/useScrollTop";
 
 export const Home = () => {
+      useScrollTop();
       useEffect(() => {
             const observer = new IntersectionObserver(
                   (entries) => {

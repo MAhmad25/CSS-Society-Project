@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { Users, Calendar, MessageSquare, BarChart3, Edit, Trash2, Loader, AlertCircle } from "lucide-react";
 import { eventAPI, announcementAPI, teamAPI } from "../services/api";
 import { useAuth } from "../context/useAuth";
-
+import useScrollTop from "../hooks/useScrollTop";
 export const AdminDashboard = () => {
+      useScrollTop();
       const [activeTab, setActiveTab] = useState("overview");
       const [stats, setStats] = useState({
             totalUsers: 0,

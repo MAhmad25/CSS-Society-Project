@@ -2,8 +2,10 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Mail, Lock, AlertCircle, Loader } from "lucide-react";
 import { useAuth } from "../context/useAuth";
+import useScrollTop from "../hooks/useScrollTop";
 
 export const Login = () => {
+      useScrollTop();
       const [email, setEmail] = useState("");
       const [password, setPassword] = useState("");
       const [error, setError] = useState("");
