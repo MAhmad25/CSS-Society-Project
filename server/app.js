@@ -12,13 +12,12 @@ const userRoutes = require("./src/routes/userRoutes");
 const eventRoutes = require("./src/routes/eventRoutes");
 const announcementRoutes = require("./src/routes/announcementRoutes");
 const teamMemberRoutes = require("./src/routes/teamMemberRoutes");
+const registrationRoutes = require("./src/routes/registrationRoutes");
 
-// Initialize Express app
 const app = express();
 
 // ==================== Middleware ====================
 
-// Security middleware
 app.use(helmet());
 
 // CORS middleware
@@ -26,13 +25,12 @@ const allowedOrigins = ["http://localhost:3000", "http://localhost:5173", "https
 
 const corsOptions = {
       origin: (origin, callback) => {
-            // Allow requests with no origin (like mobile apps or curl requests)
             if (!origin) return callback(null, true);
 
             if (allowedOrigins.includes(origin) || process.env.CORS_ORIGIN === origin) {
                   callback(null, true);
             } else {
-                  callback(null, true); // Allow all for Vercel deployment
+                  callback(null, true);
             }
       },
       methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
@@ -47,16 +45,12 @@ app.use(cors(corsOptions));
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
-// Data sanitization against NoSQL injection
 app.use(mongoSanitize());
 
-// Handle CORS preflight requests
 app.options("*", cors(corsOptions));
 
-// ==================== Routes ====================
-
 // Health check endpoint
-app.get("/api/health", (req, res) => {
+app.get("/api/health", (_, res) => {
       res.status(200).json({
             status: "success",
             message: "CSS Society API is running",
@@ -69,6 +63,8 @@ app.use("/api/users", userRoutes);
 app.use("/api/events", eventRoutes);
 app.use("/api/announcements", announcementRoutes);
 app.use("/api/team-members", teamMemberRoutes);
+app.use("/api/registrations", registrationRoutes);
+console.log("[server] mounted /api/registrations route");
 
 // Root endpoint
 app.get("/", (req, res) => {
@@ -90,10 +86,7 @@ app.use("*", (req, res) => {
       });
 });
 
-// Global error handling middleware
 app.use(errorHandler);
-
-// ==================== Database Connection ====================
 
 const PORT = process.env.PORT || 5000;
 const NODE_ENV = process.env.NODE_ENV || "development";
@@ -109,11 +102,11 @@ const startServer = async () => {
             // Start server
             app.listen(PORT, () => {
                   console.log("\n" + "=".repeat(50));
-                  console.log("🚀 CSS Society API Server Started");
+                  console.log(" CSS Society API Server Started");
                   console.log("=".repeat(50));
-                  console.log(`📍 Server Running on Port: ${PORT}`);
-                  console.log(`🌍 Environment: ${NODE_ENV}`);
-                  console.log(`📚 API Base URL: /api`);
+                  console.log(`Server Running on Port: ${PORT}`);
+                  console.log(`Environment: ${NODE_ENV}`);
+                  console.log(`API Base URL: /api`);
                   console.log("=".repeat(50) + "\n");
             });
       } catch (error) {

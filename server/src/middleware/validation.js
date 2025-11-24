@@ -62,6 +62,9 @@ const validateCreateTeamMember = [body("name").trim().notEmpty().withMessage("Na
 
 const validateUpdateTeamMember = [body("name").optional().trim().isLength({ min: 2 }).withMessage("Name must be at least 2 characters"), body("email").optional().isEmail().normalizeEmail().withMessage("Please provide a valid email"), body("position").optional().isIn(["President", "Vice President Operations", "Vice President Logistics", "General Manager", "General Secretary", "Society Manager", "Event Coordinator", "Information Secretary", "Member", "Other"]).withMessage("Invalid position")];
 
+// Registration (membership) validation
+const validateRegistration = [body("firstName").trim().notEmpty().withMessage("First name is required").isLength({ min: 1 }).withMessage("First name is required"), body("lastName").trim().notEmpty().withMessage("Last name is required").isLength({ min: 1 }).withMessage("Last name is required"), body("email").isEmail().normalizeEmail().withMessage("Please provide a valid email"), body("subject").trim().notEmpty().withMessage("Subject is required").isLength({ min: 3 }).withMessage("Subject must be at least 3 characters"), body("message").optional().trim()];
+
 // ID validation
 const validateMongoId = param("id")
       .matches(/^[0-9a-fA-F]{24}$/)
@@ -77,5 +80,6 @@ module.exports = {
       validateUpdateAnnouncement,
       validateCreateTeamMember,
       validateUpdateTeamMember,
+      validateRegistration,
       validateMongoId,
 };

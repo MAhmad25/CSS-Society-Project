@@ -14,7 +14,9 @@ const Contact = () => {
                               <div className="p-8 bg-gray-50 rounded-3xl text-left">
                                     <Mail className="text-blue-600 mb-4" size={32} />
                                     <h4 className="font-bold mb-2">Email</h4>
-                                    <p className="text-gray-600">css@gcu.edu.pk</p>
+                                    <Link to="mailto:css@gcu.edu.pk" className="text-blue-700">
+                                          css@gcu.edu.pk
+                                    </Link>
                               </div>
                               <div className="p-8 bg-gray-50 rounded-3xl text-left">
                                     <Users className="text-blue-600 mb-4" size={32} />

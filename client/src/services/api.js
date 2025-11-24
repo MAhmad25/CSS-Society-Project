@@ -92,4 +92,10 @@ export const teamAPI = {
       activateTeamMember: (id) => api.put(`/team-members/${id}/activate`),
 };
 
+// ===== REGISTRATION ENDPOINTS =====
+export const registrationAPI = {
+      createRegistration: (data) => api.post("/registrations", data),
+      getAllRegistrations: () => api.get("/registrations"),
+};
+
 export default api;

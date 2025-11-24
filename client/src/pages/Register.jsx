@@ -1,151 +1,107 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { Mail, Lock, User, AlertCircle, Loader } from "lucide-react";
-import { useAuth } from "../context/useAuth";
+import { registrationAPI } from "../services/api";
 
-export const Register = () => {
-      const [formData, setFormData] = useState({
-            fullName: "",
-            email: "",
-            password: "",
-            confirmPassword: "",
-      });
-      const [error, setError] = useState("");
+const Register = () => {
+      const [form, setForm] = useState({ firstName: "", lastName: "", email: "", subject: "", message: "" });
       const [loading, setLoading] = useState(false);
-      const navigate = useNavigate();
-      const { register } = useAuth();
+      const [error, setError] = useState("");
+      const [success, setSuccess] = useState("");
 
       const handleChange = (e) => {
-            setFormData({
-                  ...formData,
-                  [e.target.name]: e.target.value,
-            });
+            const { id, value } = e.target;
+            setForm((s) => ({ ...s, [id]: value }));
       };
 
       const handleSubmit = async (e) => {
             e.preventDefault();
             setError("");
+            setSuccess("");
 
-            // Validation
-            if (!formData.fullName || !formData.email || !formData.password || !formData.confirmPassword) {
-                  setError("Please fill in all fields");
+            // Basic validation
+            if (!form.firstName.trim() || !form.lastName.trim() || !form.email.trim() || !form.subject.trim()) {
+                  setError("Please fill in all required fields");
                   return;
             }
 
-            if (formData.password.length < 8) {
-                  setError("Password must be at least 8 characters");
-                  return;
-            }
-
-            if (formData.password !== formData.confirmPassword) {
-                  setError("Passwords do not match");
+            // Email basic regex
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(form.email.trim())) {
+                  setError("Please provide a valid email address");
                   return;
             }
 
             setLoading(true);
-            const result = await register(formData.email, formData.password, formData.fullName);
-            setLoading(false);
+            try {
+                  const dataToSend = {
+                        firstName: form.firstName.trim(),
+                        lastName: form.lastName.trim(),
+                        email: form.email.trim(),
+                        subject: form.subject.trim(),
+                        message: form.message.trim() || undefined,
+                  };
 
-            if (result.success) {
-                  navigate("/");
-            } else {
-                  setError(result.message);
+                  await registrationAPI.createRegistration(dataToSend);
+                  setSuccess("Registration submitted successfully. We'll contact you soon.");
+                  setForm({ firstName: "", lastName: "", email: "", subject: "", message: "" });
+            } catch (err) {
+                  console.error("Registration error:", err);
+                  if (err.response?.data?.data && Array.isArray(err.response.data.data)) {
+                        setError(err.response.data.data.map((d) => d.msg).join(", "));
+                  } else {
+                        setError(err.response?.data?.message || "Failed to submit registration");
+                  }
+            } finally {
+                  setLoading(false);
             }
       };
 
       return (
-            <div className="min-h-screen bg-linear-to-br from-blue-50 via-white to-yellow-50 flex items-center justify-center py-12 px-4 pt-24">
-                  <div className="w-full max-w-md">
-                        {/* Card */}
-                        <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-200/60">
-                              {/* Header */}
-                              <div className="mb-8">
-                                    <div className="flex justify-center mb-4">
-                                          <div className="w-12 h-12 bg-linear-to-br from-blue-900 to-blue-700 rounded-full flex items-center justify-center text-white font-bold">CSS</div>
-                                    </div>
-                                    <h1 className="text-3xl font-bold text-gray-900 text-center">Join CSS Society</h1>
-                                    <p className="text-gray-600 text-center mt-2">Create your account to get started</p>
-                              </div>
-
-                              {/* Form */}
-                              <form onSubmit={handleSubmit} className="space-y-4">
-                                    {/* Error Alert */}
-                                    {error && (
-                                          <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex gap-3">
-                                                <AlertCircle size={20} className="text-red-600 mt-0.5 shrink-0" />
-                                                <p className="text-red-700 text-sm">{error}</p>
+            <section className="py-32 bg-background">
+                  <div className="container mx-auto px-4">
+                        <div className="mx-auto max-w-3xl">
+                              <form onSubmit={handleSubmit} className="flex flex-col gap-6 rounded-lg border border-gray-200 p-10 bg-white shadow-sm">
+                                    {error && <div className="text-red-700 bg-red-50 p-3 rounded">{error}</div>}
+                                    {success && <div className="text-green-700 bg-green-50 p-3 rounded">{success}</div>}
+                                    <div className="flex gap-4">
+                                          <div className="grid w-full items-center gap-1.5">
+                                                <label htmlFor="firstName" className="text-sm font-medium">
+                                                      First Name
+                                                </label>
+                                                <input id="firstName" value={form.firstName} onChange={handleChange} type="text" placeholder="First Name" className="flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
                                           </div>
-                                    )}
-
-                                    {/* Full Name */}
-                                    <div>
-                                          <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-                                          <div className="relative">
-                                                <User size={20} className="absolute left-3 top-3 text-gray-400" />
-                                                <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} placeholder="Enter your full name" className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" />
+                                          <div className="grid w-full items-center gap-1.5">
+                                                <label htmlFor="lastName" className="text-sm font-medium">
+                                                      Last Name
+                                                </label>
+                                                <input id="lastName" value={form.lastName} onChange={handleChange} type="text" placeholder="Last Name" className="flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
                                           </div>
                                     </div>
-
-                                    {/* Email */}
-                                    <div>
-                                          <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                                          <div className="relative">
-                                                <Mail size={20} className="absolute left-3 top-3 text-gray-400" />
-                                                <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Enter your email" className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" />
-                                          </div>
+                                    <div className="grid w-full items-center gap-1.5">
+                                          <label htmlFor="email" className="text-sm font-medium">
+                                                Email
+                                          </label>
+                                          <input id="email" value={form.email} onChange={handleChange} type="email" placeholder="Email" className="flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
                                     </div>
-
-                                    {/* Password */}
-                                    <div>
-                                          <label className="block text-sm font-medium text-gray-700 mb-2">Password</label>
-                                          <div className="relative">
-                                                <Lock size={20} className="absolute left-3 top-3 text-gray-400" />
-                                                <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="At least 8 characters" className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" />
-                                          </div>
+                                    <div className="grid w-full items-center gap-1.5">
+                                          <label htmlFor="subject" className="text-sm font-medium">
+                                                Subject
+                                          </label>
+                                          <input id="subject" value={form.subject} onChange={handleChange} type="text" placeholder="Subject" className="flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
                                     </div>
-
-                                    {/* Confirm Password */}
-                                    <div>
-                                          <label className="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
-                                          <div className="relative">
-                                                <Lock size={20} className="absolute left-3 top-3 text-gray-400" />
-                                                <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} placeholder="Confirm your password" className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" />
-                                          </div>
+                                    <div className="grid w-full gap-1.5">
+                                          <label htmlFor="message" className="text-sm font-medium">
+                                                Message (optional)
+                                          </label>
+                                          <textarea id="message" value={form.message} onChange={handleChange} placeholder="Type your message here." className="flex min-h-[120px] w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none" />
                                     </div>
-
-                                    {/* Submit Button */}
-                                    <button type="submit" disabled={loading} className="w-full bg-linear-to-r from-blue-900 to-blue-700 text-white font-bold py-2.5 rounded-lg hover:shadow-lg transition flex items-center justify-center gap-2 disabled:opacity-50 mt-6">
-                                          {loading ? (
-                                                <>
-                                                      <Loader size={20} className="animate-spin" />
-                                                      Creating Account...
-                                                </>
-                                          ) : (
-                                                "Create Account"
-                                          )}
+                                    <button disabled={loading} type="submit" className="w-full inline-flex items-center justify-center rounded-md text-sm font-medium h-10 px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                                          {loading ? "Submitting..." : "Register for membership"}
                                     </button>
                               </form>
-
-                              {/* Divider */}
-                              <div className="my-6 flex items-center">
-                                    <div className="flex-1 border-t border-gray-300"></div>
-                                    <span className="px-4 text-gray-500 text-sm">Already have an account?</span>
-                                    <div className="flex-1 border-t border-gray-300"></div>
-                              </div>
-
-                              {/* Login Link */}
-                              <Link to="/login" className="w-full block text-center bg-gray-100 text-gray-900 font-bold py-2.5 rounded-lg hover:bg-gray-200 transition">
-                                    Sign In Instead
-                              </Link>
-
-                              {/* Back to Home */}
-                              <div className="mt-6 text-center">
-                                    <Link to="/" className="text-sm text-blue-600 hover:text-blue-700 font-medium">
-                                          ← Back to Home
-                                    </Link>
-                              </div>
                         </div>
                   </div>
-            </div>
+            </section>
       );
 };
+
+export default Register;

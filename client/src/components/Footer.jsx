@@ -43,33 +43,6 @@ export const Footer = () => {
                                     </ul>
                               </div>
 
-                              {/* Resources */}
-                              <div>
-                                    <h4 className="font-bold mb-4">Resources</h4>
-                                    <ul className="space-y-2 text-gray-400 text-sm">
-                                          <li>
-                                                <Link to="/register" className="hover:text-white transition-colors">
-                                                      Join CSS
-                                                </Link>
-                                          </li>
-                                          <li>
-                                                <Link to="/announcements" className="hover:text-white transition-colors">
-                                                      Newsletters
-                                                </Link>
-                                          </li>
-                                          <li>
-                                                <a href="#" className="hover:text-white transition-colors">
-                                                      Gallery
-                                                </a>
-                                          </li>
-                                          <li>
-                                                <a href="#" className="hover:text-white transition-colors">
-                                                      FAQs
-                                                </a>
-                                          </li>
-                                    </ul>
-                              </div>
-
                               {/* Contact */}
                               <div>
                                     <h4 className="font-bold mb-4">Contact</h4>
@@ -79,12 +52,24 @@ export const Footer = () => {
                                           <li>css@gcu.edu.pk</li>
                                     </ul>
                               </div>
+                              {/* Resources */}
+                              <div>
+                                    <h4 className="font-bold mb-4">Resources</h4>
+                                    <ul className="space-y-2 text-gray-400 text-sm">
+                                          <li>
+                                                <Link to="/announcements" className="hover:text-white transition-colors">
+                                                      Newsletters
+                                                </Link>
+                                          </li>
+                                    </ul>
+                              </div>
                         </div>
 
                         {/* Divider */}
-                        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                              <p className="text-gray-400 text-sm">© 2025 Computer Science Society, GC University Lahore</p>
-                              <p className="text-gray-400 text-sm">Crafted with 💙 by CSS Tech</p>
+                        <div className="relative w-full  flex flex-col  md:flex-row justify-between items-center   gap-4">
+                              <h1 className="absolute text-3xl md:text-5xl left-1/2 -translate-x-1/2 bottom-0 translate-y-6 bg-[#101828] text-nowrap uppercase text-gray-600">Computer Science Society</h1>
+                              <h1 className="absolute text-3xl md:text-5xl left-1/2 -translate-x-1/2 bottom-0 translate-y-10 bg-[#101828] text-nowrap uppercase text-gray-400">Computer Science Society</h1>
+                              <h1 className="absolute text-3xl font-Regular md:text-5xl left-1/2 -translate-x-1/2 bg-[#101828]  translate-y-14 uppercase text-nowrap bottom-0">Computer Science Society</h1>
                         </div>
                   </div>
             </footer>
