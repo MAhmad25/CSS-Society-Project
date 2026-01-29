@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Users, Calendar, MessageSquare, BarChart3, Edit, Trash2, Loader, AlertCircle } from "lucide-react";
-import { eventAPI, announcementAPI, teamAPI } from "../services/api";
+import { eventAPI, announcementAPI, teamAPI, registrationAPI } from "../services/api";
 import { useAuth } from "../context/useAuth";
 import useScrollTop from "../hooks/useScrollTop";
 export const AdminDashboard = () => {
@@ -11,7 +11,9 @@ export const AdminDashboard = () => {
             totalEvents: 0,
             totalAnnouncements: 0,
             totalTeamMembers: 0,
+            totalRegistrations: 0,
       });
+      const [registrations, setRegistrations] = useState([]);
       const [loading, setLoading] = useState(true);
       const [error, setError] = useState("");
       const { isAdmin } = useAuth();
@@ -82,6 +84,46 @@ export const AdminDashboard = () => {
                                     </button>
                               ))}
                         </div>
+                        {/* Registrations Tab */}
+                        {activeTab === "registrations" && (
+                              <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8">
+                                    <h2 className="text-2xl font-bold text-gray-900 mb-6">Membership Registrations</h2>
+                                    {registrations.length === 0 ? (
+                                          <div className="text-center py-12">
+                                                <MessageSquare size={40} className="mx-auto text-gray-400 mb-4" />
+                                                <p className="text-gray-600 mb-4">No registrations found.</p>
+                                          </div>
+                                    ) : (
+                                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                                {registrations.map((reg) => (
+                                                      <div key={reg._id} className="bg-gradient-to-br from-blue-50 via-white to-yellow-50 rounded-xl shadow-lg p-6 border border-gray-200">
+                                                            <div className="flex items-center gap-4 mb-4">
+                                                                  <div className="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold">
+                                                                        {reg.firstName?.charAt(0)}
+                                                                        {reg.lastName?.charAt(0)}
+                                                                  </div>
+                                                                  <div>
+                                                                        <div className="font-bold text-lg text-gray-900">
+                                                                              {reg.firstName} {reg.lastName}
+                                                                        </div>
+                                                                        <div className="text-sm text-gray-600">{reg.email}</div>
+                                                                  </div>
+                                                            </div>
+                                                            <div className="mb-2">
+                                                                  <span className="font-semibold text-blue-700">Subject:</span> {reg.subject}
+                                                            </div>
+                                                            {reg.message && (
+                                                                  <div className="mb-2">
+                                                                        <span className="font-semibold text-blue-700">Message:</span> {reg.message}
+                                                                  </div>
+                                                            )}
+                                                            <div className="text-xs text-gray-500 mt-2">Registered: {new Date(reg.createdAt).toLocaleString()}</div>
+                                                      </div>
+                                                ))}
+                                          </div>
+                                    )}
+                              </div>
+                        )}
 
                         {/* Content */}
                         {loading ? (

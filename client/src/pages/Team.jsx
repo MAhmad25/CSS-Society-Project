@@ -21,6 +21,7 @@ export const Team = () => {
             position: "Member",
             phone: "",
             bio: "",
+            image: "",
             socialLinks: {
                   linkedin: "",
                   github: "",
@@ -28,6 +29,7 @@ export const Team = () => {
                   portfolio: "",
             },
       });
+      const [imageFile, setImageFile] = useState(null);
 
       const positions = ["President", "Vice President Operations", "Vice President Logistics", "General Manager", "General Secretary", "Society Manager", "Event Coordinator", "Information Secretary", "Member", "Other"];
 
@@ -50,7 +52,7 @@ export const Team = () => {
       }, []);
 
       const handleFormChange = (e) => {
-            const { name, value } = e.target;
+            const { name, value, files } = e.target;
             if (name.startsWith("social_")) {
                   const socialKey = name.replace("social_", "");
                   setFormData({
@@ -60,6 +62,8 @@ export const Team = () => {
                               [socialKey]: value,
                         },
                   });
+            } else if (name === "image") {
+                  setImageFile(files[0]);
             } else {
                   setFormData({
                         ...formData,
@@ -91,12 +95,19 @@ export const Team = () => {
             }
 
             try {
+                  let imageUrl = "";
+                  if (imageFile) {
+                        // Upload member image to Cloudinary into single 'css' folder
+                        const { uploadImageToCloudinary } = await import("../services/cloudinary");
+                        imageUrl = await uploadImageToCloudinary(imageFile, "css");
+                  }
                   const dataToSend = {
                         name: formData.name.trim(),
                         email: formData.email.trim(),
                         position: formData.position,
                         phone: formData.phone.trim() || undefined,
                         bio: formData.bio.trim() || undefined,
+                        image: imageUrl || formData.image,
                         socialLinks: formData.socialLinks,
                   };
 
@@ -114,6 +125,7 @@ export const Team = () => {
                         position: "Member",
                         phone: "",
                         bio: "",
+                        image: "",
                         socialLinks: {
                               linkedin: "",
                               github: "",
@@ -121,6 +133,7 @@ export const Team = () => {
                               portfolio: "",
                         },
                   });
+                  setImageFile(null);
                   setShowCreateForm(false);
 
                   // Refetch
@@ -318,9 +331,7 @@ export const Team = () => {
                                           <div key={member._id} className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition overflow-hidden border border-gray-200">
                                                 {/* Header */}
                                                 <div className="h-24 bg-linear-to-r from-blue-500 to-blue-700 flex items-end justify-center pb-4">
-                                                      <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center border-4 border-blue-700">
-                                                            <Users size={40} className="text-blue-600" />
-                                                      </div>
+                                                      <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center border-4 border-blue-700 overflow-hidden">{member.image ? <img src={member.image} alt={member.name} className="w-full h-full object-cover rounded-full" /> : <Users size={40} className="text-blue-600" />}</div>
                                                 </div>
 
                                                 {/* Content */}

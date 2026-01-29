@@ -7,7 +7,6 @@ import useScrollTop from "../hooks/useScrollTop";
 export const Events = () => {
       useScrollTop();
       const [events, setEvents] = useState([]);
-      console.log(events);
       const [loading, setLoading] = useState(true);
       const [selectedCategory, setSelectedCategory] = useState("");
       const [selectedStatus, setSelectedStatus] = useState("");
@@ -26,7 +25,9 @@ export const Events = () => {
             category: "workshop",
             maxParticipants: "",
             status: "upcoming",
+            image: "",
       });
+      const [imageFile, setImageFile] = useState(null);
 
       const categories = ["workshop", "competition", "seminar", "hackathon", "networking", "other"];
       const statuses = ["upcoming", "ongoing", "completed", "cancelled"];
@@ -37,10 +38,7 @@ export const Events = () => {
                   try {
                         setLoading(true);
                         setError("");
-                        console.log("Fetching events with filters:", { selectedCategory, selectedStatus });
                         const response = await eventAPI.getAllEvents(selectedCategory || undefined, selectedStatus || undefined);
-                        console.log("Events API Response:", response);
-                        console.log("Events data:", response.data.data.events);
                         setEvents(response.data.data.events || []);
                   } catch (err) {
                         console.error("Error fetching events:", err);
@@ -57,6 +55,9 @@ export const Events = () => {
                   ...formData,
                   [e.target.name]: e.target.value,
             });
+            if (e.target.name === "image") {
+                  setImageFile(e.target.files[0]);
+            }
       };
 
       const handleCreateEvent = async (e) => {
@@ -81,6 +82,12 @@ export const Events = () => {
 
             try {
                   // Clean up form data - remove empty maxParticipants
+                  let imageUrl = "";
+                  if (imageFile) {
+                        // Upload image to Cloudinary into single 'css' folder
+                        const { uploadImageToCloudinary } = await import("../services/cloudinary");
+                        imageUrl = await uploadImageToCloudinary(imageFile, "css");
+                  }
                   const dataToSend = {
                         title: formData.title.trim(),
                         description: formData.description.trim(),
@@ -88,6 +95,7 @@ export const Events = () => {
                         location: formData.location.trim(),
                         category: formData.category,
                         maxParticipants: formData.maxParticipants ? parseInt(formData.maxParticipants, 10) : undefined,
+                        image: imageUrl || formData.image,
                   };
 
                   // Only include status if editing
@@ -111,7 +119,9 @@ export const Events = () => {
                         category: "workshop",
                         maxParticipants: "",
                         status: "upcoming",
+                        image: "",
                   });
+                  setImageFile(null);
                   setShowCreateForm(false);
 
                   // Refetch events with current filters to show the newly created event
