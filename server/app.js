@@ -13,6 +13,7 @@ const eventRoutes = require("./src/routes/eventRoutes");
 const announcementRoutes = require("./src/routes/announcementRoutes");
 const teamMemberRoutes = require("./src/routes/teamMemberRoutes");
 const registrationRoutes = require("./src/routes/registrationRoutes");
+const uploadRoutes = require("./src/routes/uploadRoutes");
 
 const app = express();
 
@@ -65,6 +66,8 @@ app.use("/api/announcements", announcementRoutes);
 app.use("/api/team-members", teamMemberRoutes);
 app.use("/api/registrations", registrationRoutes);
 console.log("[server] mounted /api/registrations route");
+app.use("/api/uploads", uploadRoutes);
+console.log("[server] mounted /api/uploads route");
 
 // Root endpoint
 app.get("/", (req, res) => {
