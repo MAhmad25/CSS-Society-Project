@@ -79,13 +79,13 @@ export const Footer = () => {
 
         {/* Divider */}
         <div className="relative w-full  flex flex-col overflow-hidden md:overflow-visible  md:flex-row justify-between items-center   gap-4">
-          <h1 className="absolute text-3xl md:text-5xl left-1/2 -translate-x-1/2 bottom-0 translate-y-6 bg-[#101828] text-nowrap uppercase text-gray-600">
+          <h1 className="absolute text-3xl md:text-7xl left-1/2 -translate-x-1/2 bottom-0 translate-y-6 bg-[#101828] text-nowrap uppercase text-gray-600">
             Computer Science Society
           </h1>
-          <h1 className="absolute text-3xl md:text-5xl left-1/2 -translate-x-1/2 bottom-0 translate-y-10 bg-[#101828] text-nowrap uppercase text-gray-400">
+          <h1 className="absolute text-3xl md:text-7xl left-1/2 -translate-x-1/2 bottom-0 translate-y-12 bg-[#101828] text-nowrap uppercase text-gray-400">
             Computer Science Society
           </h1>
-          <h1 className="absolute text-3xl font-Regular md:text-5xl left-1/2 -translate-x-1/2 bg-[#101828]  translate-y-14 uppercase text-nowrap bottom-0">
+          <h1 className="absolute text-3xl font-Regular md:text-7xl left-1/2 -translate-x-1/2 bg-[#101828]  translate-y-20 uppercase text-nowrap bottom-0">
             Computer Science Society
           </h1>
         </div>
